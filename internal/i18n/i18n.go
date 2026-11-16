@@ -14,8 +14,7 @@ const (
 
 var texts = map[string]map[string]string{
 	"en": {
-		"start": waveEmoji + " Hello, {name}!\n\nI shorten links, download videos without watermarks, look up an <b>IP</b> or a <b>domain</b> and show your IP. Pick an action or just send a link, IP or domain.\n\nExamples: {examples}\n\n" +
-			chatEmoji + " Works in any chat too: type <code>@{bot} 8.8.8.8</code>",
+		"start": waveEmoji + " Hello, {name}!\n\nI shorten links, download videos without watermarks, look up an <b>IP</b> or a <b>domain</b> and show your IP. Pick an action or just send a link, IP or domain.",
 		"help": "📚 <b>How to use</b>\n\n" +
 			"Send a link to get a short one. A video link (TikTok, Instagram, YouTube, X, VK and others) gets you the file without a watermark (up to 50 MB). The My IP button shows your own address. Commands:\n\n" +
 			"/ip <code>&lt;address&gt;</code> - look up an IP or domain\n" +
@@ -80,8 +79,7 @@ var texts = map[string]map[string]string{
 		"short_denied":     "⛔ Link shortening is not available to you. IP and domain lookup works for everyone.",
 	},
 	"ru": {
-		"start": waveEmoji + " Привет, {name}!\n\nСокращаю ссылки, качаю видео без водяных знаков, ищу <b>IP</b> или <b>домен</b> и показываю твой IP. Выбери действие или просто отправь ссылку, IP или домен.\n\nПримеры: {examples}\n\n" +
-			chatEmoji + " Работаю и в любом чате: напиши <code>@{bot} 8.8.8.8</code>",
+		"start": waveEmoji + " Привет, {name}!\n\nСокращаю ссылки, качаю видео без водяных знаков, ищу <b>IP</b> или <b>домен</b> и показываю твой IP. Выбери действие или просто отправь ссылку, IP или домен.",
 		"help": "📚 <b>Как пользоваться</b>\n\n" +
 			"Отправь ссылку, чтобы получить короткую. Ссылка на видео (TikTok, Instagram, YouTube, X, VK и другие) вернёт файл без водяного знака (до 50 МБ). Кнопка «Мой IP» покажет твой адрес. Команды:\n\n" +
 			"/ip <code>&lt;адрес&gt;</code> - найти IP или домен\n" +
