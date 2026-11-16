@@ -1,10 +1,8 @@
 package bot
 
 import (
-	"encoding/json"
 	"html"
 	"log"
-	"shortener/internal/game"
 	"shortener/internal/i18n"
 	"shortener/internal/ipinfo"
 	"shortener/internal/shorten"
@@ -64,7 +62,6 @@ func menuKeyboard(lang string) keyboard {
 			{Text: i18n.Tr(lang, "btn_ip"), Data: "m:ip", Icon: "5222258908529207849"},
 		},
 		{
-			{Text: i18n.Tr(lang, "btn_game"), Data: "m:game", Icon: "5292081728003808363"},
 			{Text: i18n.Tr(lang, "btn_myip"), WebApp: &webApp{shorten.Domain + "/myip"}},
 		},
 	}}
@@ -109,21 +106,6 @@ func handleCallback(bot *tgbotapi.BotAPI, q *tgbotapi.CallbackQuery) {
 	case "m:ip":
 		setMode(chatID, "ip")
 		editMenu(bot, q.Message, i18n.Tr(lang, "ask_ip"), cancelKeyboard(lang))
-	case "m:game":
-		if q.Message.Chat.Type != "private" {
-			sendHTML(bot, chatID, 0, i18n.Tr(lang, "game_private"))
-			return
-		}
-		kb, _ := json.Marshal(tgbotapi.NewInlineKeyboardMarkup(tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData(i18n.Tr(lang, "btn_cancel"), "g:back"))))
-		if err := game.Send(bot, chatID, string(kb)); err != nil {
-			log.Printf("game: %v", err)
-			return
-		}
-		bot.Request(tgbotapi.NewDeleteMessage(chatID, q.Message.MessageID))
-	case "g:back":
-		sendCard(bot, chatID, 0, startText(bot, q.From, lang), menuKeyboard(lang))
-		bot.Request(tgbotapi.NewDeleteMessage(chatID, q.Message.MessageID))
 	case "m:cancel":
 		setMode(chatID, "")
 		editMenu(bot, q.Message, startText(bot, q.From, lang), menuKeyboard(lang))
